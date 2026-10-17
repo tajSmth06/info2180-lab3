@@ -8,8 +8,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let gameState= Array(9).fill(null);
     let currentPlayer = 'X';
+    let isGameOver = false;
     squares.forEach(function(square, index) {
     square.addEventListener('click', function() {
+        if(isGameOver || gameState[index] !== null) {
+            return; 
+        }
         gameState[index] = currentPlayer;
         square.textContent = currentPlayer; 
         square.classList.add(currentPlayer);
@@ -30,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }); 
     }); 
     
-    newGameButton.addEventListener('click', function() {
+    newGameButton.addEventListener('click', function(e) {
     e.preventDefault();
     gameState = Array(9).fill(null);
     currentPlayer = 'X';
