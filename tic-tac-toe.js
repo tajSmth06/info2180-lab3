@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     squares.forEach(function(square) {
         square.classList.add('square');
     });
-});
+
 let gameState= Array(9).fill(null);
 let currentPlayer = 'X';
 
@@ -14,4 +14,11 @@ squares.forEach(function(square, index) {
         square.classList.add(currentPlayer);
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     });
+    square.addEventListener('mouseenter', function() {
+        square.classList.add('hover');
+    }); 
+    square.addEventListener('mouseleave', function() {
+        square.classList.remove('hover'); 
+    });
+});
 });
